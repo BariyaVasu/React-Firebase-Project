@@ -76,46 +76,50 @@ export const Navbar = () => {
         {isOpen && (
           <div className="md:hidden py-5 border-t border-white/10">
             <div className="flex flex-col gap-4">
-              <Link
+              <NavLink
                 to="/"
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-pink-400 transition"
+                className={({ isActive }) =>
+                  `${isActive ? "text-pink-400 " : "text-gray-300 "}`
+                }
               >
                 Home
-              </Link>
+              </NavLink>
 
-              <Link
+              <NavLink
                 to="/about"
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-pink-400 transition"
+                className={({ isActive }) =>
+                  `${isActive ? "text-pink-400 " : "text-gray-300 "}`
+                }
               >
                 About Us
-              </Link>
+              </NavLink>
 
-              <Link
+              <NavLink
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-pink-400 transition"
+                className={({ isActive }) =>
+                  `${isActive ? "text-pink-400 " : "text-gray-300 "}`
+                }
               >
                 Contact
-              </Link>
+              </NavLink>
 
               <div className="flex gap-3 pt-2">
-                <Link
+                <NavLink
                   to="/login"
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 text-gray-300 border border-white/10 rounded-lg"
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-full text-sm font-medium transition duration-300 ${
+                      isActive
+                        ? "bg-black border border-pink-400 text-pink-400"
+                        : "bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20"
+                    }`
+                  }
                 >
                   Login
-                </Link>
-
-                <Link
-                  to="/register"
-                  onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 text-white"
-                >
-                  Register
-                </Link>
+                </NavLink>
               </div>
             </div>
           </div>
