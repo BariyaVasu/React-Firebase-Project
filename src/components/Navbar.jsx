@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,19 +21,23 @@ export const Navbar = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
-            <Link
+            <NavLink
               to="/"
-              className="text-gray-300 hover:text-pink-400 transition duration-300"
+              className={({ isActive }) =>
+                `hover:text-pink-400 transition duration-300 ${isActive ? "text-pink-400 " : "text-gray-300 "}`
+              }
             >
               Home
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               to="/about"
-              className="text-gray-300 hover:text-pink-400 transition duration-300"
+              className={({ isActive }) =>
+                `hover:text-pink-400 transition duration-300 ${isActive ? "text-pink-400 " : "text-gray-300 "}`
+              }
             >
               About Us
-            </Link>
+            </NavLink>
 
             <Link
               to="/contact"
@@ -45,19 +49,18 @@ export const Navbar = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
+            <NavLink
               to="/login"
-              className="px-4 py-2 text-sm text-gray-300 hover:text-white transition"
+              className={({ isActive }) =>
+                `px-5 py-2 rounded-full text-sm font-medium transition duration-300 ${
+                  isActive
+                    ? "bg-black border border-pink-400 text-pink-400"
+                    : "bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20"
+                }`
+              }
             >
               Login
-            </Link>
-
-            <Link
-              to="/register"
-              className="px-5 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm font-medium hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20 transition duration-300"
-            >
-              Register
-            </Link>
+            </NavLink>
           </div>
 
           {/* Mobile Button */}
