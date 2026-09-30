@@ -1,16 +1,92 @@
-# React + Vite
+# React + Firebase Authentication
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive authentication application built with **React** and **Firebase Authentication**.
 
-Currently, two official plugins are available:
+The project provides a clean authentication experience with Email/Password and Google Sign-In, along with a structured React architecture using Context API and React Router.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔐 Email & Password Authentication
+- 🔵 Google Sign-In
+- 📝 User Registration
+- 🔑 User Login
+- 🚪 User Logout
+- 👤 Authentication State Management
+- 🛡️ Protected Routes
+- 🧭 Client-side Routing with React Router
+- 📱 Responsive UI
+- 🎨 Modern UI with Tailwind CSS
+- 🔔 Toast Notifications
+- 🧩 Reusable React Components
+- 📂 Clean and scalable project structure
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+### Frontend
+
+- React
+- JavaScript
+- Vite
+- React Router
+- Tailwind CSS
+
+### Authentication & Backend Services
+
+- Firebase Authentication
+
+### Libraries
+
+- React Hot Toast
+- Firebase
+- React Router DOM
+
+---
+
+## 📁 Project Structure
+
+```text
+client/
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   │
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   └── Footer.jsx
+│   │
+│   ├── configs/
+│   │   └── firebaseConfig.js
+│   │
+│   ├── contexts/
+│   │   └── AuthContext.jsx
+│   │
+│   ├── hooks/
+│   │   └── useAuth.js
+│   │
+│   ├── layouts/
+│   │   └── MainLayout.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   └── Dashboard.jsx
+│   │
+│   ├── routes/
+│   │   └── router.jsx
+│   │
+│   ├── index.css
+│   └── main.jsx
+│
+├── .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
