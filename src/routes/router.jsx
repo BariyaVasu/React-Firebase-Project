@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "aboutus",
+        path: "about",
         element: <About />,
       },
     ],
