@@ -13,11 +13,11 @@ import { useNavigate } from "react-router-dom";
 const auth = getAuth(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
 
-const navigate = useNavigate();
-
 export const AuthContext = createContext(null);
 
 export const AuthProvider = (props) => {
+  const navigate = useNavigate();
+
   const signupUser = async (email, password) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -37,6 +37,7 @@ export const AuthProvider = (props) => {
       toast.error(error.message);
     }
   };
+
   const signinWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -46,7 +47,9 @@ export const AuthProvider = (props) => {
       toast.error(error.message);
     }
   };
+
   const value = [signupUser, signinUser, signinWithGoogle];
+  
   return (
     <AuthContext.Provider value={{ value }}>
       {props.children}
