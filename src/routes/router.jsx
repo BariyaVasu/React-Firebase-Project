@@ -5,11 +5,16 @@ import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Contact } from "../pages/Contact";
 import { About } from "../pages/About";
+import { AuthProvider } from "../contexts/AuthContext";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    element: (
+      <AuthProvider>
+        <MainLayout />
+      </AuthProvider>
+    ),
     children: [
       {
         index: true,
