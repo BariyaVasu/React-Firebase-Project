@@ -1,6 +1,25 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export const Register = () => {
+  const { signupUser } = useAuth();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputData = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    signupUser(formData.email, formData.password);
+  };
+
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center px-6 py-20">
       {/* Background Glow */}
@@ -23,7 +42,7 @@ export const Register = () => {
 
         {/* Register Card */}
         <div className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm">
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleFormSubmit}>
             {/* Email */}
             <div>
               <label
@@ -34,9 +53,10 @@ export const Register = () => {
               </label>
 
               <input
-                id="email"
                 type="email"
                 name="email"
+                onChange={handleInputData}
+                value={formData.email}
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-pink-500/60 focus:ring-1 focus:ring-pink-500/30 transition"
               />
@@ -52,19 +72,17 @@ export const Register = () => {
               </label>
 
               <input
-                id="password"
                 type="password"
                 name="password"
+                onChange={handleInputData}
+                value={formData.password}
                 placeholder="Create a password"
                 className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-pink-500/60 focus:ring-1 focus:ring-pink-500/30 transition"
               />
             </div>
 
             {/* Register Button */}
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium hover:scale-[1.02] hover:shadow-lg hover:shadow-pink-500/20 transition duration-300"
-            >
+            <button className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium hover:scale-[1.02] hover:shadow-lg hover:shadow-pink-500/20 transition duration-300">
               Create Account
             </button>
           </form>
