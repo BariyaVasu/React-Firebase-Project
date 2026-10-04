@@ -1,6 +1,29 @@
+import { use, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export const Login = () => {
+  const { signinUser, signinWithGoogle } = useAuth();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputData = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleGoogleLogin = () => {
+    signinWithGoogle();
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    signinUser(formData.email, formData.password);
+  };
+
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center px-6 py-20">
       {/* Background Glow */}
@@ -23,7 +46,7 @@ export const Login = () => {
 
         {/* Login Card */}
         <div className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm">
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleFormSubmit}>
             {/* Email */}
             <div>
               <label
@@ -34,9 +57,10 @@ export const Login = () => {
               </label>
 
               <input
-                id="email"
                 type="email"
                 name="email"
+                onChange={handleInputData}
+                value={formData.email}
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-pink-500/60 focus:ring-1 focus:ring-pink-500/30 transition"
               />
@@ -52,19 +76,17 @@ export const Login = () => {
               </label>
 
               <input
-                id="password"
                 type="password"
                 name="password"
+                onChange={handleInputData}
+                value={formData.password}
                 placeholder="Enter your password"
                 className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-pink-500/60 focus:ring-1 focus:ring-pink-500/30 transition"
               />
             </div>
 
             {/* Login Button */}
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium hover:scale-[1.02] hover:shadow-lg hover:shadow-pink-500/20 transition duration-300"
-            >
+            <button className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium hover:scale-[1.02] hover:shadow-lg hover:shadow-pink-500/20 transition duration-300">
               Login
             </button>
           </form>
@@ -78,7 +100,7 @@ export const Login = () => {
 
           {/* Google Button */}
           <button
-            type="button"
+            onClick={handleGoogleLogin}
             className="w-full py-3 rounded-xl border border-white/10 bg-white/[0.02] text-gray-300 hover:bg-white/[0.06] hover:border-white/20 transition flex items-center justify-center gap-3"
           >
             <span className="font-bold text-lg">G</span>
