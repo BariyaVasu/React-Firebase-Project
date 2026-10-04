@@ -49,10 +49,8 @@ export const AuthProvider = (props) => {
   };
 
   const value = [signupUser, signinUser, signinWithGoogle];
-  
+
   return (
-    <AuthContext.Provider value={{ value }}>
-      {props.children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
   );
 };
